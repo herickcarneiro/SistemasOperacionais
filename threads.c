@@ -1,4 +1,4 @@
-//SoluÁ„o do problema Produtor-Consumidor sem ultilizaÁ„o de sincronizaÁ„o conforme foi socilitado pelo professor
+//Solu√ß√£o do problema Produtor-Consumidor sem utiliza√ß√£o de sincroniza√ß√£o conforme foi socilitado pelo professor
 
 
 
@@ -20,10 +20,10 @@ int consumed_count = 0;
 void* producer(void* arg) {
     int producer_id = ((int)arg);
 
-    if(producer_id == 1){  //Verifico qual È a Thread que est· enviando a funÁ„o, se È a primeira, segunda, terceira ou quarta
+    if(producer_id == 1){  //Verifico qual √© a Thread que est√° enviando a fun√ß√£o, se √© a primeira, segunda, terceira ou quarta
 
         char item[WORD_LENGTH];
-        snprintf(item, WORD_LENGTH, "Estudo"); //Envio cada palavra que ser· produziada ao buffer
+        snprintf(item, WORD_LENGTH, "Estudo"); //Envio cada palavra que ser√° produziada ao buffer
 
         strncpy(buffer[in], item, WORD_LENGTH - 1);
         buffer[in][WORD_LENGTH - 1] = '\0';
@@ -58,14 +58,14 @@ void* producer(void* arg) {
 
         in = (in + 1) % BUFFER_SIZE;
 
-        snprintf(item, WORD_LENGTH, "ser·");
+        snprintf(item, WORD_LENGTH, "ser√°");
         strncpy(buffer[in], item, WORD_LENGTH - 1);
         buffer[in][WORD_LENGTH - 1] = '\0';
         //printf("Produced de ID %d: %s\n", producer_id, item);
 
         in = (in + 1) % BUFFER_SIZE;
 
-        snprintf(item, WORD_LENGTH, "campe„o");
+        snprintf(item, WORD_LENGTH, "campe√£o");
         strncpy(buffer[in], item, WORD_LENGTH - 1);
         buffer[in][WORD_LENGTH - 1] = '\0';
         //printf("Produced de ID %d: %s\n", producer_id, item);
@@ -79,7 +79,7 @@ else if(producer_id == 3) {
         char item[WORD_LENGTH];
         snprintf(item, WORD_LENGTH, "Gosto");
 
-        // Removida a verificaÁ„o de espaÁo no buffer
+        // Removida a verifica√ß√£o de espa√ßo no buffer
 
         strncpy(buffer[in], item, WORD_LENGTH - 1);
         buffer[in][WORD_LENGTH - 1] = '\0';
@@ -106,7 +106,7 @@ else {
         char item[WORD_LENGTH];
         snprintf(item, WORD_LENGTH, "Alisson");
 
-        // Removida a verificaÁ„o de espaÁo no buffer
+        // Removida a verifica√ß√£o de espa√ßo no buffer
 
         strncpy(buffer[in], item, WORD_LENGTH - 1);
         buffer[in][WORD_LENGTH - 1] = '\0';
@@ -162,21 +162,21 @@ int main() {
     int producer_id[4];
     int consumer_id[4];
 
-    for(i=0; i<4; i++) {  //CriaÁ„o de 4 threads produtora
+    for(i=0; i<4; i++) {  //Cria√ß√£o de 4 threads produtora
     producer_id[i] = i + 1;
     pthread_create(&producerThread[i], NULL, producer, (void *)&producer_id[i]);
     }
 
-    for(i=0; i<4; i++){  //CriaÁ„o de 4 threads consumidoras
+    for(i=0; i<4; i++){  //Cria√ß√£o de 4 threads consumidoras
     consumer_id[i] = i + 1;
     pthread_create(&consumerThread[i], NULL, consumer, (void *)&consumer_id[i]);
     }
 
-    for(i=0; i<4; i++){ //Espero pelas 4 threads produtoras terminem suas execuÁıes
+    for(i=0; i<4; i++){ //Espero pelas 4 threads produtoras terminem suas execu√ß√µes
     pthread_join(producerThread[i], NULL);
     }
 
-    for(i=0; i<4; i++){ //Espero pelas 4 threads consumidoras terminem suas execuÁıes
+    for(i=0; i<4; i++){ //Espero pelas 4 threads consumidoras terminem suas execu√ß√µes
     pthread_join(consumerThread[i], NULL);
     }
 
